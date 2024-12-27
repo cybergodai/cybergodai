@@ -1,4 +1,4 @@
- CyberGod Project
+ CyberGod Project 
 
 CyberGod is an open-source project designed to revolutionize endpoint security by leveraging advanced virtualization technologies. By integrating a C# component for automated system setup and a Python component for containerized secure browsing, CyberGod provides a robust, scalable foundation for modern cybersecurity needs.
 
@@ -7,6 +7,7 @@ Overview
 The CyberGod project includes two main components:
 1. A C# script (`Program.cs`) for setting up Windows Subsystem for Linux (WSL2) and Ubuntu 24.04 on Windows.
 2. A Python script (`install_lxc_chrome_x12.py`) for configuring Linux Containers (LXC) and securing applications like Google Chrome.
+3. Nonice its important to preinstall in Win10/11 PC VcXsrv X Server Release: 1.17.2.0 https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip. After install go to Start-find Xlaunch->Multiple windows->Start No Client->Disable access control->Finish. Make sure in running apps in Windows on lower right corner you have X server. - Later this will be incorporated in C# installer
 
 These components work together to establish a secure environment for endpoint protection, utilizing virtualization and containerization to isolate potential threats.
 
@@ -150,4 +151,15 @@ For inquiries, support, or collaboration opportunities:
 - Discord DEVELOPERS & CONTRIBUTORS ONLY: https://discord.gg/DscPJNkQ 
 
 CyberGod is a community-driven initiative, aiming to revolutionize endpoint security. Join us in building a safer digital future!
+Pre-Release Software Notice
+
+This software is provided as a pre-release version and is intended for testing and evaluation purposes only. By downloading, installing, or using this software, you acknowledge and agree to the following:
+
+Responsibility: The installation, testing, and usage of this software are solely at your own risk. The developers and contributors are not responsible for any issues, damages, or losses arising from its use.
+
+Open Source: This software is open source and provided "as-is" under its applicable open source license. There are no warranties, express or implied, including but not limited to merchantability or fitness for a particular purpose.
+
+Support: All support for this software is provided on a best-effort basis by the community and contributors. There are no guarantees of response times or resolution of issues.
+
+Feedback: Users are encouraged to provide feedback, report bugs, and suggest improvements to help enhance the software. Please use the designated channels (e.g., issue trackers, forums) for submitting feedback.
 
