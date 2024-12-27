@@ -125,10 +125,17 @@ Monitor Installation
 2. Test the setup to ensure Chrome runs securely in the container.
 
 Outcome: The system will have a secure, sandboxed environment ready for isolated application execution.
-
+UNINSTALLATION:
 We also had added 2 uninstalls:
 1. Uninstall just for LXC container that was created named "my-container" python script "stop_delete_container.py" , if you wish to delete this container and re-run the install_lxc_chrome_x12.py you can just activate the command sudo python3 stop_delete_container.py and everything that was done by python script "install_lxc_chrome_x12.py" will be removed under Ubuntu, and then you can re-run the script "install_lxc_chrome_x12.py"
-2. We also added C# script to completely remove Ubuntu 24.04 and also remove WSL environment named "uninstall.cs". In order to use the script uninstall.cs you need to create directory in your Windows for example C:\Users\your user\Documents\cybergod uninstall then please with your right mouse button click on the Start button in Windows choose powershell admin 
+2. We also added C# script to completely remove Ubuntu 24.04 and also remove WSL environment named "uninstall.cs". In order to use the script uninstall.cs you need to create directory in your Windows for example C:\Users\your user\Documents\cybergod uninstall then please with your right mouse button click on the Start button in Windows choose powershell admin or terminal admin, navigate to cd  C:\Users\your user\Documents\cybergod uninstall and use command dotnet new console --force , this will create new C# project, then go remove from this directory Program.cs file and replace this with our file uninstall.cs and then use command dotnet run this command will remove all the traces of Ubuntu 24.04 and WSL, after this command will complete you can check this by performing the following commands in Windows Admin Terminal window:
+   dism.exe /online /get-featureinfo /featurename:Microsoft-Windows-Subsystem-Linux
+the outcome should be several lines with State : Disabled message.
+Then please use command dism.exe /online /get-featureinfo /featurename:VirtualMachinePlatform
+The outcome should be several lines with State : Disabled
+Then run command wsl --list --all
+The outcome should be Windows Subsystem for Linux has no installed distributions.
+
 
 Supported Platforms
 
