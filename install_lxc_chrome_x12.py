@@ -54,6 +54,15 @@ def install_lxd():
     print("Installing LXD via snap...")
     run_command("sudo snap install lxd", use_sudo=True)
 
+def initialize_lxd():
+    """
+    Initialize LXD with default configurations.
+    Ensures LXD is set up and ready to use.
+    """
+    print("Initializing LXD...")
+    # Running lxd init non-interactively with default settings
+    run_command("sudo lxd init --auto", use_sudo=True)    
+
 def create_lxc_container():
     """
     Create the LXC container with Ubuntu 24.04.
@@ -77,12 +86,12 @@ def configure_x11_in_container():
     Sets up the DISPLAY environment variable and tests X11 connectivity with xeyes.
     """
     print("Configuring X11 inside the LXC container...")
-    run_command('echo "export DISPLAY=172.24.16.1:0" >> ~/.bashrc', inside_container=True)
+    run_command('echo "export DISPLAY=172.26.160.1:0" >> ~/.bashrc', inside_container=True)
     run_command('source ~/.bashrc', inside_container=True)
 
     # Verify X11 connection (using xeyes as an example)
     print("Testing X11 connection with xeyes...")
-    result = run_command("env DISPLAY=172.24.16.1:0 xeyes", inside_container=True, timeout=10)
+    result = run_command("env DISPLAY=172.26.160.1:0 xeyes", inside_container=True, timeout=10)
     if result is None:
         print("Terminating xeyes to prevent blocking X server.")
         run_command("pkill xeyes", inside_container=True)  # Kill xeyes to free X server
@@ -114,7 +123,7 @@ def run_chrome_in_container():
     Launches Chrome with the --no-sandbox flag.
     """
     print("Running Google Chrome inside the container...")
-    run_command("env DISPLAY=172.24.16.1:0 google-chrome --no-sandbox", inside_container=True)
+    run_command("env DISPLAY=172.26.160.1:0 google-chrome --no-sandbox", inside_container=True)
 
 def main():
     """
@@ -123,6 +132,7 @@ def main():
     """
     install_and_update_ubuntu()
     install_lxd()
+    initialize_lxd()  # New step to initialize LXD
     create_lxc_container()
     install_packages_in_container()
     configure_x11_in_container()
