@@ -7,7 +7,7 @@ Overview
 The CyberGod project includes two main components:
 1. A C# script (`Program.cs`) for setting up Windows Subsystem for Linux (WSL2) and Ubuntu 24.04 on Windows.
 2. A Python script (`install_lxc_chrome_x12.py`) for configuring Linux Containers (LXC) and securing applications like Google Chrome.
-3. Nonice its important to preinstall in Win10/11 PC VcXsrv X Server Release: 1.17.2.0 https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip. After install go to Start-find Xlaunch->Multiple windows->Start No Client->Disable access control->Finish. Make sure in running apps in Windows on lower right corner you have X server. - Later this will be incorporated in C# installer
+3. Nonice its important to preinstall in Win10/11 PC VcXsrv X Server Release: 1.17.2.0 https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip. After install go to Start-find "Xlaunch"->Multiple windows->Start No Client->Disable access control->Finish. Make sure in running apps in Windows on lower right corner you have X server. - Later this will be incorporated in C# installer
 
 These components work together to establish a secure environment for endpoint protection, utilizing virtualization and containerization to isolate potential threats.
 
@@ -45,19 +45,26 @@ Steps to Run
 
 Install .NET SDK
 1. Download and install the .NET SDK from [Microsoft’s official site](https://dotnet.microsoft.com/download).
+2. after the installation click on the "Start" with your right mouse button and choose option Poweshell Admin.
+3. In Windows CLI please use command "dotnet --version" to check that Net SDK is installed, you should see something like this
+PS C:\Windows\system32> dotnet --version
+9.0.100
+4. Navigate to the directory where you want to run the C# project for example C:\Users\your user\Downloads\swtest
+5. while in CLI as Powershell admin use there command "dotnet new console --force" this will create all files needed for C# project.
+6. Then remove there `Program.cs` and paste there our `Program.cs` file.
 
 Open the Script
 1. Open the `Program.cs` file in your preferred code editor (e.g., VS Code).
 
 Run the Script
-1. Open a terminal or command prompt.
+1. Open a terminal or command prompt. (As Admin)
 2. Navigate to the directory containing `Program.cs`:
    ```bash
    cd path/to/Program.cs
    ```
 3. Run the program:
    ```bash
-   dotnet run Program.cs
+   dotnet run 
    ```
 
 Follow Installation Steps
@@ -65,12 +72,14 @@ Follow Installation Steps
    - Installing Chocolatey.
    - Enabling WSL2.
    - Installing Ubuntu 24.04.
-2. Monitor the progress and ensure no errors occur.
+2. Monitor the progress and ensure no errors occur. If you will be prompted to restart choose NO.
 
-Outcome: Upon completion, WSL2 and Ubuntu 24.04 will be installed and ready for further configurations.
+Outcome: Upon completion, WSL2 and Ubuntu 24.04 will be installed and ready for further configurations. After this install you will need to go to "Start"-and find Ubuntu 24.04 LTS and click on it, Ubuntu 24.04 first config will start, you will be promted to create admin/sudo user, please create a user for youself (memorize this user), you will be also asked to create a password for this super user (memorize this password as well) you will be asked two times to retype this password. then click enter and the Ubuntu 24.04 configuration will finish. DO NOT CLOSE THE UBUNTU TERMINAL WINDOW!
+
 
 NOTICE: You will need to go to Start->Run->write cmd-> perform command ipconfig/all check what is the ip address of your Ethernet adapter vEthernet (WSL) it should be something like 172.24.16.x and write down this IP address
 ---
+
 
 Step 2: Configuring with Python (`install_lxc_chrome_x12.py`)
 NOTICE: Open the install_lxc_chrome_x12.py with any code compiler such as VS Code and go to line 80 run_command('echo "export DISPLAY=172.24.16.1:0" >> and change the ip address to your WSL virtual IP address, also make similar change in line 85, line 117
@@ -86,6 +95,8 @@ Steps to Run
 
 Transfer the Python Script
 1. Save `install_lxc_chrome_x12.py` to a shared directory accessible by both Windows and Ubuntu WSL, such as `C:\Users\<YourUsername>\SharedWSL`.
+2. Then please go to shared directory between your windows and WSL Ubuntu 24.04 inside your Ubuntu terminal that is still opened. Strong suggestion is to make this directory structure simple for example it can be your C:\Users\your user\Documents\tests in your windows, in the Ubuntu terminal use command cd /mnt/c/Users/feran/Documents/tests
+NOTICE: in this directory should be your install_lxc_chrome_x12.py file and then run command: python3 install_lxc_chrome_x12.py
 
 Access the Script in WSL
 1. Open the WSL terminal and navigate to the shared directory:
@@ -114,6 +125,10 @@ Monitor Installation
 2. Test the setup to ensure Chrome runs securely in the container.
 
 Outcome: The system will have a secure, sandboxed environment ready for isolated application execution.
+
+We also had added 2 uninstalls:
+1. Uninstall just for LXC container that was created named "my-container" python script "stop_delete_container.py" , if you wish to delete this container and re-run the install_lxc_chrome_x12.py you can just activate the command sudo python3 stop_delete_container.py and everything that was done by python script "install_lxc_chrome_x12.py" will be removed under Ubuntu, and then you can re-run the script "install_lxc_chrome_x12.py"
+2. We also added C# script to completely remove Ubuntu 24.04 and also remove WSL environment named "uninstall.cs". In order to use the script uninstall.cs you need to create directory in your Windows for example C:\Users\your user\Documents\cybergod uninstall then please with your right mouse button click on the Start button in Windows choose powershell admin 
 
 Supported Platforms
 
