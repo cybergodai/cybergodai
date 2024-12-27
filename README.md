@@ -69,10 +69,11 @@ Follow Installation Steps
 
 Outcome: Upon completion, WSL2 and Ubuntu 24.04 will be installed and ready for further configurations.
 
+NOTICE: You will need to go to Start->Run->write cmd-> perform command ipconfig/all check what is the ip address of your Ethernet adapter vEthernet (WSL) it should be something like 172.24.16.x and write down this IP address
 ---
 
 Step 2: Configuring with Python (`install_lxc_chrome_x12.py`)
-
+NOTICE: Open the install_lxc_chrome_x12.py with any code compiler such as VS Code and go to line 80 run_command('echo "export DISPLAY=172.24.16.1:0" >> and change the ip address to your WSL virtual IP address, also make similar change in line 85, line 117
 What It Does
 The Python script performs the following:
 1. Sets up Linux Containers (LXC) within the Ubuntu environment.
