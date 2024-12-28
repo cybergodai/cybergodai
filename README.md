@@ -1,193 +1,156 @@
-# CyberGod: Revolutionizing Endpoint Security
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f4f4f4;
+        }
+        .container {
+            padding: 20px;
+        }
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #218838;
+        }
+        details {
+            margin: 10px 0;
+        }
+        details summary {
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 CyberGod: Revolutionizing Endpoint Security</h1>
 
-**CyberGod** is an open-source project designed to transform endpoint security through advanced virtualization technologies. With a modular architecture combining C# and Python, CyberGod provides a robust foundation for modern cybersecurity.
+        <p><strong>CyberGod</strong> is an open-source project designed to transform endpoint security through advanced virtualization technologies. 🚀</p>
 
----
+        <h2>✨ Overview</h2>
+        <ul>
+            <li>🔹 <strong>C# Script:</strong> Automates WSL2 and Ubuntu 24.04 setup on Windows.</li>
+            <li>🔹 <strong>Python Script:</strong> Configures LXC for secure browsing with Google Chrome.</li>
+        </ul>
 
-## Overview
+        <p><em>Note:</em> Pre-install VcXsrv X Server (<a href="https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip">Download</a>) and ensure it is running. ✅</p>
 
-CyberGod includes two main components:
+        <h2>🔧 Prerequisites</h2>
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Details</th>
+            </tr>
+            <tr>
+                <td>System Requirements</td>
+                <td>Windows 10/11, PC or VM with sufficient resources</td>
+            </tr>
+            <tr>
+                <td>Software Requirements</td>
+                <td>.NET SDK, Python 3, Code Editor (VS Code, JetBrains Rider, etc.)</td>
+            </tr>
+        </table>
 
-1. **C# Script**: Automates Windows Subsystem for Linux (WSL2) and Ubuntu 24.04 setup on Windows.
-2. **Python Script**: Configures Linux Containers (LXC) for secure browsing with Google Chrome.
+        <h2>📖 Step-by-Step Guide</h2>
 
-> **Note:** Pre-install VcXsrv X Server ([Download](https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip)):
-> - Launch `Xlaunch`: Select **Multiple windows > Start No Client > Disable access control > Finish**.
-> - Confirm X server is running in the Windows system tray.
+        <details>
+            <summary>Step 1: Setting Up with C#</summary>
+            <ol>
+                <li>Install .NET SDK and verify installation:</li>
+                <pre><code>dotnet --version</code></pre>
+                <li>Create a new project and replace <code>Program.cs</code> with CyberGod's script:</li>
+                <pre><code>mkdir cybergod &amp;&amp; cd cybergod
+                dotnet new console --force</code></pre>
+                <li>Run the script:</li>
+                <pre><code>dotnet run</code></pre>
+            </ol>
+        </details>
 
----
+        <details>
+            <summary>Step 2: Configuring with Python</summary>
+            <ol>
+                <li>Edit <code>install_lxc_chrome_x12.py</code> with your WSL IP address.</li>
+                <li>Run the script in WSL:</li>
+                <pre><code>python3 install_lxc_chrome_x12.py</code></pre>
+                <li>Monitor the output to ensure LXC and Chrome are installed securely.</li>
+            </ol>
+        </details>
 
-## Prerequisites
+        <h2>❌ Uninstallation</h2>
+        <ul>
+            <li>Run <code>stop_delete_container.py</code> to remove the LXC container.</li>
+            <li>Run <code>uninstall.cs</code> to remove Ubuntu and WSL completely.</li>
+        </ul>
 
-### System Requirements
-- **OS**: Windows 10/11
-- **Hardware**: PC, laptop, server, or VM capable of running WSL and Ubuntu
+        <h2>🌟 Vision</h2>
+        <p>CyberGod aims to:</p>
+        <ul>
+            <li>🤖 Incorporate AI-driven threat detection.</li>
+            <li>📡 Expand support to IoT devices.</li>
+            <li>📜 Ensure compliance with DORA, NIS2, and CRA frameworks.</li>
+        </ul>
 
-### Software Requirements
-- **Code Editor**: VS Code, JetBrains Rider, or Notepad++
-- **.NET SDK**: Download from [Microsoft](https://dotnet.microsoft.com/download)
-- **Python 3**: Pre-installed in WSL Ubuntu environment
+        <h2>🤝 Contribution Guidelines</h2>
+        <p>We welcome contributions!</p>
+        <ul>
+            <li>Fork the repository and create a new branch:</li>
+            <pre><code>git checkout -b feature-name</code></pre>
+            <li>Commit your changes:</li>
+            <pre><code>git commit -m "Description of changes"</code></pre>
+            <li>Push and create a pull request.</li>
+        </ul>
 
-### Editor Plugins (for C#)
-- **VS Code**: Install "C# for Visual Studio Code" extension
-- Configure the editor for .NET Core projects.
+        <h2>📬 Contact</h2>
+        <p>Join us:</p>
+        <ul>
+            <li>Telegram: <a href="https://t.me/+WttALifnSAtjYTMy">Join Us</a></li>
+            <li>Discord (Developers Only): <a href="https://discord.gg/DscPJNkQ">Join</a></li>
+        </ul>
 
----
-
-## Step 1: Setting Up with C#
-
-### What It Does
-The C# script automates:
-- Installing Chocolatey (Windows package manager).
-- Configuring WSL2 and installing Ubuntu 24.04.
-- Preparing the system for Python-based configurations.
-
-### Steps to Run
-
-1. **Install .NET SDK**:
-   - Install the .NET SDK and verify:
-     ```bash
-     dotnet --version
-     ```
-     Example output:
-     ```
-     9.0.100
-     ```
-
-2. **Prepare the Project**:
-   - Open PowerShell as Administrator.
-   - Create a new directory for the project and navigate to it:
-     ```bash
-     mkdir cybergod && cd cybergod
-     dotnet new console --force
-     ```
-   - Replace the default `Program.cs` with the provided CyberGod `Program.cs` file.
-
-3. **Run the Script**:
-   ```bash
-   dotnet run
-   ```
-
-4. **Follow Installation Prompts**:
-   - Install Chocolatey.
-   - Enable WSL2.
-   - Install Ubuntu 24.04.
-   - After completion:
-     - Launch Ubuntu 24.04 from the Start menu.
-     - Create a sudo user and password during initial setup.
-     - Use `ipconfig /all` in CMD to find the WSL IP (e.g., `172.24.16.x`).
-
----
-
-## Step 2: Configuring with Python
-
-### What It Does
-The Python script:
-- Configures LXC within Ubuntu.
-- Sets up a secure Chrome browser container with X11 forwarding.
-
-### Steps to Run
-
-1. **Edit the Script**:
-   - Update `install_lxc_chrome_x12.py` with your WSL IP address:
-     - Lines 80, 85, and 117 should reflect your IP (e.g., `172.24.16.1`).
-
-2. **Run the Script**:
-   - Save `install_lxc_chrome_x12.py` in a shared directory accessible by WSL.
-   - In WSL, navigate to the directory:
-     ```bash
-     cd /mnt/c/Users/<YourUsername>/Documents/tests
-     python3 install_lxc_chrome_x12.py
-     ```
-
-3. **Monitor Output**:
-   - Install LXC and dependencies.
-   - Configure containers and install Google Chrome.
-   - Verify Chrome’s functionality with X11.
-
----
-
-## Uninstallation
-
-### 1. Remove LXC Container
-Run the Python uninstallation script:
-```bash
-sudo python3 stop_delete_container.py
-```
-
-### 2. Remove Ubuntu and WSL
-Run the C# uninstallation script:
-1. Create a new directory for the project and navigate to it:
-   ```bash
-   mkdir cybergod_uninstall && cd cybergod_uninstall
-   dotnet new console --force
-   ```
-2. Replace `Program.cs` with `uninstall.cs`.
-3. Run the script:
-   ```bash
-   dotnet run
-   ```
-4. Verify:
-   ```bash
-   dism.exe /online /get-featureinfo /featurename:Microsoft-Windows-Subsystem-Linux
-   dism.exe /online /get-featureinfo /featurename:VirtualMachinePlatform
-   wsl --list --all
-   ```
-   Expected output should show `State : Disabled` and no installed distributions.
-
----
-
-## Supported Platforms
-
-- **Windows 10/11**: Preferred for WSL2.
-- **Ubuntu 24.04**: Base environment for Linux Containers.
-- **Virtualization**: VMware, Hyper-V.
-- **Cloud**: AWS, Azure, GCP.
-
----
-
-## Vision
-
-CyberGod aims to:
-- Incorporate AI-driven threat detection.
-- Expand support to IoT devices.
-- Ensure compliance with frameworks like DORA, NIS2, and CRA.
-- Develop advanced attack simulations using digital twins.
-
----
-
-## Contribution Guidelines
-
-We welcome contributions:
-
-1. Fork the repository.
-2. Create a branch for your changes:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Description of changes"
-   ```
-4. Push and create a pull request.
-
----
-
-## Contact
-
-- **Telegram**: [Join Us](https://t.me/+WttALifnSAtjYTMy)
-- **Discord**: Developers Only [Join](https://discord.gg/DscPJNkQ)
-
----
-
-## Pre-Release Software Notice
-
-CyberGod is a pre-release project. Use at your own risk:
-- **Responsibility**: Users are responsible for their installations.
-- **Open Source**: Provided "as-is" with no warranties.
-- **Support**: Community-driven, best-effort basis.
-
----
-
-Join us in building a safer digital future!
+        <hr>
+        <p style="text-align: center;">CyberGod is a community-driven initiative. 🌍 Let's build a safer digital future together! 💻</p>
+    </div>
+</body>
+</html>
 
