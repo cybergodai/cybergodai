@@ -1,188 +1,193 @@
- CyberGod Project 
+# CyberGod: Revolutionizing Endpoint Security
 
-CyberGod is an open-source project designed to revolutionize endpoint security by leveraging advanced virtualization technologies. By integrating a C# component for automated system setup and a Python component for containerized secure browsing, CyberGod provides a robust, scalable foundation for modern cybersecurity needs.
+**CyberGod** is an open-source project designed to transform endpoint security through advanced virtualization technologies. With a modular architecture combining C# and Python, CyberGod provides a robust foundation for modern cybersecurity.
 
-Overview
-
-The CyberGod project includes two main components:
-1. A C# script (`Program.cs`) for setting up Windows Subsystem for Linux (WSL2) and Ubuntu 24.04 on Windows.
-2. A Python script (`install_lxc_chrome_x12.py`) for configuring Linux Containers (LXC) and securing applications like Google Chrome.
-3. Nonice its important to preinstall in Win10/11 PC VcXsrv X Server Release: 1.17.2.0 https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip. After install go to Start-find "Xlaunch"->Multiple windows->Start No Client->Disable access control->Finish. Make sure in running apps in Windows on lower right corner you have X server. - Later this will be incorporated in C# installer
-
-These components work together to establish a secure environment for endpoint protection, utilizing virtualization and containerization to isolate potential threats.
-
-Prerequisites
-
-Before using the CyberGod project, ensure the following requirements are met:
-
-System Requirements
-- Operating System: Windows 10 or Windows 11.
-- Hardware: A PC, laptop, server, or virtual machine with sufficient resources to run WSL and Ubuntu.
-
-Software Requirements
-- Code Editor (choose one):
-  - [Visual Studio Code (VS Code)](https://code.visualstudio.com/)
-  - [JetBrains Rider](https://www.jetbrains.com/rider/)
-  - [Notepad++](https://notepad-plus-plus.org/)
-- .NET SDK: Download and install the latest version from [Microsoft](https://dotnet.microsoft.com/download).
-- Python 3: Available within the Ubuntu environment in WSL.
-
-Editor Plugins for C#
-- For VS Code, install the "C# for Visual Studio Code" extension.
-- Configure your editor to recognize and work with .NET Core projects.
-
-Step 1: Setting Up with C# (`Program.cs`)
-
-What It Does
-The C# script automates the following tasks:
-1. Installs Chocolatey, a package manager for Windows.
-2. Enables and configures Windows Subsystem for Linux (WSL2).
-3. Installs Ubuntu 24.04 inside WSL for a virtualized Linux environment.
-4. Tracks progress and provides updates for each installation step.
-5. Prepares the system for running additional configurations using the Python component.
-
-Steps to Run
-
-Install .NET SDK
-1. Download and install the .NET SDK from [Microsoft’s official site](https://dotnet.microsoft.com/download).
-2. after the installation click on the "Start" with your right mouse button and choose option Poweshell Admin.
-3. In Windows CLI please use command "dotnet --version" to check that Net SDK is installed, you should see something like this
-PS C:\Windows\system32> dotnet --version
-9.0.100
-4. Navigate to the directory where you want to run the C# project for example C:\Users\your user\Downloads\swtest
-5. while in CLI as Powershell admin use there command "dotnet new console --force" this will create all files needed for C# project.
-6. Then remove there `Program.cs` and paste there our `Program.cs` file.
-
-Open the Script
-1. Open the `Program.cs` file in your preferred code editor (e.g., VS Code).
-
-Run the Script
-1. Open a terminal or command prompt. (As Admin)
-2. Navigate to the directory containing `Program.cs`:
-   ```bash
-   cd path/to/Program.cs
-   ```
-3. Run the program:
-   ```bash
-   dotnet run 
-   ```
-
-Follow Installation Steps
-1. The script will prompt and guide you through:
-   - Installing Chocolatey.
-   - Enabling WSL2.
-   - Installing Ubuntu 24.04.
-2. Monitor the progress and ensure no errors occur. If you will be prompted to restart choose NO.
-
-Outcome: Upon completion, WSL2 and Ubuntu 24.04 will be installed and ready for further configurations. After this install you will need to go to "Start"-and find Ubuntu 24.04 LTS and click on it, Ubuntu 24.04 first config will start, you will be promted to create admin/sudo user, please create a user for youself (memorize this user), you will be also asked to create a password for this super user (memorize this password as well) you will be asked two times to retype this password. then click enter and the Ubuntu 24.04 configuration will finish. DO NOT CLOSE THE UBUNTU TERMINAL WINDOW!
-
-
-NOTICE: You will need to go to Start->Run->write cmd-> perform command ipconfig/all check what is the ip address of your Ethernet adapter vEthernet (WSL) it should be something like 172.24.16.x and write down this IP address
 ---
 
+## Overview
 
-Step 2: Configuring with Python (`install_lxc_chrome_x12.py`)
-NOTICE: Open the install_lxc_chrome_x12.py with any code compiler such as VS Code and go to line 80 run_command('echo "export DISPLAY=172.24.16.1:0" >> and change the ip address to your WSL virtual IP address, also make similar change in line 85, line 117
-What It Does
-The Python script performs the following:
-1. Sets up Linux Containers (LXC) within the Ubuntu environment.
-2. Configures an isolated container for secure browsing with Google Chrome.
-3. Sets up X11 forwarding to enable graphical applications.
-4. Installs Google Chrome in the container.
-5. Verifies and tests Chrome’s functionality in a secure, sandboxed environment.
+CyberGod includes two main components:
 
-Steps to Run
+1. **C# Script**: Automates Windows Subsystem for Linux (WSL2) and Ubuntu 24.04 setup on Windows.
+2. **Python Script**: Configures Linux Containers (LXC) for secure browsing with Google Chrome.
 
-Transfer the Python Script
-1. Save `install_lxc_chrome_x12.py` to a shared directory accessible by both Windows and Ubuntu WSL, such as `C:\Users\<YourUsername>\SharedWSL`.
-2. Then please go to shared directory between your windows and WSL Ubuntu 24.04 inside your Ubuntu terminal that is still opened. Strong suggestion is to make this directory structure simple for example it can be your C:\Users\your user\Documents\tests in your windows, in the Ubuntu terminal use command cd /mnt/c/Users/feran/Documents/tests
-NOTICE: in this directory should be your install_lxc_chrome_x12.py file and then run command: python3 install_lxc_chrome_x12.py
+> **Note:** Pre-install VcXsrv X Server ([Download](https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip)):
+> - Launch `Xlaunch`: Select **Multiple windows > Start No Client > Disable access control > Finish**.
+> - Confirm X server is running in the Windows system tray.
 
-Access the Script in WSL
-1. Open the WSL terminal and navigate to the shared directory:
+---
+
+## Prerequisites
+
+### System Requirements
+- **OS**: Windows 10/11
+- **Hardware**: PC, laptop, server, or VM capable of running WSL and Ubuntu
+
+### Software Requirements
+- **Code Editor**: VS Code, JetBrains Rider, or Notepad++
+- **.NET SDK**: Download from [Microsoft](https://dotnet.microsoft.com/download)
+- **Python 3**: Pre-installed in WSL Ubuntu environment
+
+### Editor Plugins (for C#)
+- **VS Code**: Install "C# for Visual Studio Code" extension
+- Configure the editor for .NET Core projects.
+
+---
+
+## Step 1: Setting Up with C#
+
+### What It Does
+The C# script automates:
+- Installing Chocolatey (Windows package manager).
+- Configuring WSL2 and installing Ubuntu 24.04.
+- Preparing the system for Python-based configurations.
+
+### Steps to Run
+
+1. **Install .NET SDK**:
+   - Install the .NET SDK and verify:
+     ```bash
+     dotnet --version
+     ```
+     Example output:
+     ```
+     9.0.100
+     ```
+
+2. **Prepare the Project**:
+   - Open PowerShell as Administrator.
+   - Create a new directory for the project and navigate to it:
+     ```bash
+     mkdir cybergod && cd cybergod
+     dotnet new console --force
+     ```
+   - Replace the default `Program.cs` with the provided CyberGod `Program.cs` file.
+
+3. **Run the Script**:
    ```bash
-   cd /mnt/c/Users/<YourUsername>/SharedWSL
+   dotnet run
    ```
 
-Ensure Python 3 is Installed
-1. Update package lists and install Python 3 if not already installed:
+4. **Follow Installation Prompts**:
+   - Install Chocolatey.
+   - Enable WSL2.
+   - Install Ubuntu 24.04.
+   - After completion:
+     - Launch Ubuntu 24.04 from the Start menu.
+     - Create a sudo user and password during initial setup.
+     - Use `ipconfig /all` in CMD to find the WSL IP (e.g., `172.24.16.x`).
+
+---
+
+## Step 2: Configuring with Python
+
+### What It Does
+The Python script:
+- Configures LXC within Ubuntu.
+- Sets up a secure Chrome browser container with X11 forwarding.
+
+### Steps to Run
+
+1. **Edit the Script**:
+   - Update `install_lxc_chrome_x12.py` with your WSL IP address:
+     - Lines 80, 85, and 117 should reflect your IP (e.g., `172.24.16.1`).
+
+2. **Run the Script**:
+   - Save `install_lxc_chrome_x12.py` in a shared directory accessible by WSL.
+   - In WSL, navigate to the directory:
+     ```bash
+     cd /mnt/c/Users/<YourUsername>/Documents/tests
+     python3 install_lxc_chrome_x12.py
+     ```
+
+3. **Monitor Output**:
+   - Install LXC and dependencies.
+   - Configure containers and install Google Chrome.
+   - Verify Chrome’s functionality with X11.
+
+---
+
+## Uninstallation
+
+### 1. Remove LXC Container
+Run the Python uninstallation script:
+```bash
+sudo python3 stop_delete_container.py
+```
+
+### 2. Remove Ubuntu and WSL
+Run the C# uninstallation script:
+1. Create a new directory for the project and navigate to it:
    ```bash
-   sudo apt update && sudo apt install -y python3
+   mkdir cybergod_uninstall && cd cybergod_uninstall
+   dotnet new console --force
    ```
-
-Run the Script
-1. Execute the Python script:
+2. Replace `Program.cs` with `uninstall.cs`.
+3. Run the script:
    ```bash
-   python3 install_lxc_chrome_x12.py
+   dotnet run
    ```
-
-Monitor Installation
-1. Follow the script’s output to:
-   - Install LXC and its dependencies.
-   - Configure and launch the container.
-   - Install Google Chrome inside the container.
-   - Set up X11 for graphical interface support.
-2. Test the setup to ensure Chrome runs securely in the container.
-
-Outcome: The system will have a secure, sandboxed environment ready for isolated application execution.
-UNINSTALLATION:
-We also had added 2 uninstalls:
-1. Uninstall just for LXC container that was created named "my-container" python script "stop_delete_container.py" , if you wish to delete this container and re-run the install_lxc_chrome_x12.py you can just activate the command sudo python3 stop_delete_container.py and everything that was done by python script "install_lxc_chrome_x12.py" will be removed under Ubuntu, and then you can re-run the script "install_lxc_chrome_x12.py"
-2. We also added C# script to completely remove Ubuntu 24.04 and also remove WSL environment named "uninstall.cs". In order to use the script uninstall.cs you need to create directory in your Windows for example C:\Users\your user\Documents\cybergod uninstall then please with your right mouse button click on the Start button in Windows choose powershell admin or terminal admin, navigate to cd  C:\Users\your user\Documents\cybergod uninstall and use command dotnet new console --force , this will create new C# project, then go remove from this directory Program.cs file and replace this with our file uninstall.cs and then use command dotnet run this command will remove all the traces of Ubuntu 24.04 and WSL, after this command will complete you can check this by performing the following commands in Windows Admin Terminal window:
+4. Verify:
+   ```bash
    dism.exe /online /get-featureinfo /featurename:Microsoft-Windows-Subsystem-Linux
-the outcome should be several lines with State : Disabled message.
-Then please use command dism.exe /online /get-featureinfo /featurename:VirtualMachinePlatform
-The outcome should be several lines with State : Disabled
-Then run command wsl --list --all
-The outcome should be Windows Subsystem for Linux has no installed distributions.
+   dism.exe /online /get-featureinfo /featurename:VirtualMachinePlatform
+   wsl --list --all
+   ```
+   Expected output should show `State : Disabled` and no installed distributions.
 
+---
 
-Supported Platforms
+## Supported Platforms
 
-- Preferred Platform: Windows 10 and 11 using WSL2 for seamless virtualization.
-- Native Windows 10 and 11: Compatible with PCs, laptops, servers, and virtual machines, including Desktop as a Service (DaaS) environments.
-- Ubuntu 24.04: As the base environment for Linux Containers.
-- Virtualization Platforms: VMware, Hyper-V.
-- Cloud Platforms: AWS, Azure, GCP.
+- **Windows 10/11**: Preferred for WSL2.
+- **Ubuntu 24.04**: Base environment for Linux Containers.
+- **Virtualization**: VMware, Hyper-V.
+- **Cloud**: AWS, Azure, GCP.
 
-Vision
+---
 
-CyberGod aims to be a comprehensive cybersecurity framework. Future plans include:
-- AI-driven threat detection and remediation.
-- Support for additional operating systems and IoT devices.
-- Compliance with regulatory frameworks like DORA, NIS2, and CRA.
-- Advanced attack simulations using digital twins.
+## Vision
 
-Contribution Guidelines
+CyberGod aims to:
+- Incorporate AI-driven threat detection.
+- Expand support to IoT devices.
+- Ensure compliance with frameworks like DORA, NIS2, and CRA.
+- Develop advanced attack simulations using digital twins.
 
-We welcome contributions to expand and improve the CyberGod project. To contribute:
+---
+
+## Contribution Guidelines
+
+We welcome contributions:
+
 1. Fork the repository.
-2. Create a new branch for your feature or bug fix:
+2. Create a branch for your changes:
    ```bash
    git checkout -b feature-name
    ```
-3. Commit your changes with clear messages:
+3. Commit your changes:
    ```bash
    git commit -m "Description of changes"
    ```
-4. Push your changes to your fork and create a pull request.
+4. Push and create a pull request.
 
-Contact
+---
 
-For inquiries, support, or collaboration opportunities:
-- Telegram for all users: https://t.me/+WttALifnSAtjYTMy
-- Discord DEVELOPERS & CONTRIBUTORS ONLY: https://discord.gg/DscPJNkQ 
+## Contact
 
-CyberGod is a community-driven initiative, aiming to revolutionize endpoint security. Join us in building a safer digital future!
-Pre-Release Software Notice
+- **Telegram**: [Join Us](https://t.me/+WttALifnSAtjYTMy)
+- **Discord**: Developers Only [Join](https://discord.gg/DscPJNkQ)
 
-This software is provided as a pre-release version and is intended for testing and evaluation purposes only. By downloading, installing, or using this software, you acknowledge and agree to the following:
+---
 
-Responsibility: The installation, testing, and usage of this software are solely at your own risk. The developers and contributors are not responsible for any issues, damages, or losses arising from its use.
+## Pre-Release Software Notice
 
-Open Source: This software is open source and provided "as-is" under its applicable open source license. There are no warranties, express or implied, including but not limited to merchantability or fitness for a particular purpose.
+CyberGod is a pre-release project. Use at your own risk:
+- **Responsibility**: Users are responsible for their installations.
+- **Open Source**: Provided "as-is" with no warranties.
+- **Support**: Community-driven, best-effort basis.
 
-Support: All support for this software is provided on a best-effort basis by the community and contributors. There are no guarantees of response times or resolution of issues.
+---
 
-Feedback: Users are encouraged to provide feedback, report bugs, and suggest improvements to help enhance the software. Please use the designated channels (e.g., issue trackers, forums) for submitting feedback.
+Join us in building a safer digital future!
 
