@@ -28,6 +28,34 @@ By the end of this guide, you’ll have a secure setup ready to handle potential
    - [Visual Studio Code (VS Code)](https://code.visualstudio.com/).
 2. **.NET SDK**: This is required to run the C# script. [Download it here](https://dotnet.microsoft.com/download).
 3. **VcXsrv X Server**: This software makes Linux apps appear on Windows. [Download it here](https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip).
+   VcXsrv X Server Configuration on Windows 10/11
+To use Linux graphical applications (like Google Chrome) on your Windows system, you need to configure VcXsrv X Server. Follow these steps:
+
+Step 1: Install VcXsrv X Server
+Download VcXsrv X Server:
+
+Visit the VcXsrv download page.
+Save the installer file to your computer (e.g., in your Downloads folder).
+Install VcXsrv:
+
+Locate the downloaded file and double-click to start the installation.
+Follow the prompts (click "Next" for all options and ensure the installation completes successfully).
+Step 2: Launch and Configure VcXsrv
+Start VcXsrv:
+
+Go to the Start menu.
+Type Xlaunch in the search bar and press Enter.
+Set Up VcXsrv:
+
+In the Xlaunch configuration window, select:
+Multiple Windows: This allows Linux apps to open as separate windows on Windows.
+Click Next.
+Choose:
+Start No Client: This setting is essential for running apps from Linux containers.
+Click Next.
+In the next window:
+Disable Access Control: This allows your Linux apps to connect to VcXsrv.
+Click Finish.
 
 ### 3️⃣ Time
 
