@@ -1,6 +1,6 @@
 # 🌟 CyberGod: Revolutionizing Endpoint Security
 
-Welcome to CyberGod! This project will guide you step-by-step to set up a **secure browsing environment** on your Windows 10 or 11 computer using **Linux Containers (LXC)** and **Google Chrome**. Don’t worry if you’ve never worked with Linux before—we’ve got you covered! 🛡️
+Welcome to CyberGod! This project guides you step-by-step to set up a **secure browsing environment** on your Windows 10 or 11 computer using **Linux Containers (LXC)** and **Google Chrome**. Don’t worry if these terms are unfamiliar or you’ve never worked with Linux before—we’ve got you covered! 🛡️
 
 ---
 
@@ -19,43 +19,34 @@ By the end of this guide, you’ll have a secure setup ready to handle potential
 
 ### 1️⃣ Your Computer
 
-- **Operating System**: Windows 10 or 11.
+- **Operating System**: Windows 10 or 11, updated to the latest version.
 - **Hardware**: Any PC or laptop that runs Windows smoothly.
 
 ### 2️⃣ Software to Install
 
 1. **Code Editor**: This is a tool to edit files. We recommend:
    - [Visual Studio Code (VS Code)](https://code.visualstudio.com/).
+   - You can also use a plain text editor, such as Windows Notepad. Avoid using a rich-text editor, such as Microsoft Word.
 2. **.NET SDK**: This is required to run the C# script. [Download it here](https://dotnet.microsoft.com/download).
-3. **VcXsrv X Server**: This software makes Linux apps appear on Windows. [Download it here](https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip).
-   VcXsrv X Server Configuration on Windows 10/11
+3. **VcXsrv X Server**: This software makes Linux apps with graphical interfaces appear on Windows. [Download it here](https://vcxsrv.com/wp-content/uploads/2024/09/vcxsrv-64.1.17.2.0.installer.zip).
+
+### VcXsrv X Server Configuration on Windows 10/11
 To use Linux graphical applications (like Google Chrome) on your Windows system, you need to configure VcXsrv X Server. Follow these steps:
 
-Step 1: Install VcXsrv X Server
-Download VcXsrv X Server:
-
-Visit the VcXsrv download page.
-Save the installer file to your computer (e.g., in your Downloads folder).
-Install VcXsrv:
-
-Locate the downloaded file and double-click to start the installation.
-Follow the prompts (click "Next" for all options and ensure the installation completes successfully).
-Step 2: Launch and Configure VcXsrv
-Start VcXsrv:
-
-Go to the Start menu.
-Type Xlaunch in the search bar and press Enter.
-Set Up VcXsrv:
-
-In the Xlaunch configuration window, select:
-Multiple Windows: This allows Linux apps to open as separate windows on Windows.
-Click Next.
-Choose:
-Start No Client: This setting is essential for running apps from Linux containers.
-Click Next.
-In the next window:
-Disable Access Control: This allows your Linux apps to connect to VcXsrv.
-Click Finish.
+1. Install VcXsrv X Server
+    1. [Download VcXsrv X Server](https://github.com/marchaesen/vcxsrv/releases/download/21.1.13/vcxsrv.21.1.13.0.installer.noadmin.exe), saving it to your computer, such as the `Downloads` folder.
+    1. Install VcXsrv by opening your Windows file Explorer and navigating to where you downloaded the `vcxsrv...installer.noadmin.exe` file.
+        3. Double click on this file to start the installation.
+        4. Follow the prompts (click "Next" for all options and ensure the installation completes successfully).
+1. Launch and Configure VcXsrv
+    1. Start VcXsrv by going to the __Start__ menu and typing `Xlaunch` in the search bar, pressing Enter.
+    1. Set up and configure VcXsrv:
+        - In the Xlaunch configuration window, select __Multiple Windows__, which allows Linux apps to open as separate windows on Windows.
+    1. Click Next
+    1. Choose __Start No Client__. which is essential for running apps from Linux containers.
+    1. Click Next.
+    1. In this next window select __Disable Access Control__, allowing your Linux apps to connect to VcXsrv.
+    1. Click Finish.
 
 ### 3️⃣ Time
 
