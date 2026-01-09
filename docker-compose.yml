@@ -1,0 +1,19 @@
+services:
+  chrome-vnc:
+    build: .
+    container_name: chrome-vnc
+    ports:
+      - "9090:9090"   # noVNC web UI
+      - "5900:5900"   # raw VNC (optional)
+      - "9222:9222"   # Chrome remote-debug health endpoint
+    environment:
+      - DISPLAY=:0
+    shm_size: 2gb
+    restart: unless-stopped
+    healthcheck:
+      # Healthy only if noVNC answers AND Chrome's /json/version answers
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9090/ >/dev/null && curl -fsS http://localhost:9222/json/version >/dev/null"]
+      interval: 15s
+      timeout: 5s
+      retries: 6
+      start_period: 40s

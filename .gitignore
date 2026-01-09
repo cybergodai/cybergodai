@@ -1,0 +1,12 @@
+# local data / state
+chrome-data/
+*.log
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Docker
+**/.env
