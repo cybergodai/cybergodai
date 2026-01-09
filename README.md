@@ -44,7 +44,7 @@ Docker Container
 
 You access it at:
 - `http://localhost:9090/vnc_auto.html`
-
+Video manual on how it suppose to work: https://app.screencastify.com/watch/X1XtFBB5r6SP4kvM0xIM?checkOrg=b7e279de-d85e-4c64-9bff-adbce5c43088
 ---
 
 ## ✅ Requirements (Windows 10 / 11)
@@ -115,6 +115,7 @@ Open this in your browser:
 
 You should see a desktop + Chrome running.
 
+Video Manual how its suppose to work: https://app.screencastify.com/watch/X1XtFBB5r6SP4kvM0xIM?checkOrg=b7e279de-d85e-4c64-9bff-adbce5c43088 
 ---
 
 ## 🛑 Stop / Start / Reset (KISS commands)
