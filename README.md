@@ -1,4 +1,265 @@
-# 🌟 CyberGod: Revolutionizing Endpoint Security
+# 🌟 CyberGod — Secure Browser Sandbox (Docker + Web VNC)
+
+## ✅ Update (09/01/2026) — Architecture Simplified (KISS)
+This project was updated on 09/01/2026 to make the setup super KISS (Keep It Simple, Stupid).
+
+### What changed?
+We removed the old architecture:
+- ❌ C# installer for Windows Subsystem for Linux (WSL)
+- ❌ Ubuntu 24.04 inside WSL
+- ❌ Linux Containers (LXC)
+- ❌ X11 installation on Windows (VcXsrv, XLaunch, etc.)
+
+We replaced everything with:
+- ✅ Docker + Docker Compose
+- ✅ One container that runs:
+  - X virtual display (Xvfb)
+  - Window manager (Openbox)
+  - VNC server (x11vnc)
+  - Web VNC (noVNC) — access via browser
+  - Google Chrome
+- ✅ You open Chrome using a web page (no Windows X11 needed)
+
+Result: Clone repo → docker compose up → open browser → Chrome is there.
+
+---
+
+## 🧠 What is CyberGod?
+CyberGod provides a safe, isolated Chrome browser running inside a Docker container.
+
+Why?
+- Browsing is risky.
+- This sandbox isolates Chrome from your Windows host.
+- If a website is malicious, the damage stays inside the container.
+
+---
+
+## 🧱 New Architecture (KISS)
+Windows PC
+- runs Docker Desktop
+
+Docker Container
+- runs Chrome inside a virtual display
+- shares it via noVNC Web UI
+
+You access it at:
+- `http://localhost:9090/vnc_auto.html`
+
+---
+
+## ✅ Requirements (Windows 10 / 11)
+You only need:
+
+1. Docker Desktop for Windows
+   - Install Docker Desktop
+   - Enable WSL2 backend when Docker asks (default recommended)
+2. Git (optional, but recommended)
+3. A browser (Chrome/Edge)
+
+That’s it.
+
+---
+
+## 🚀 Install & Run (Step-by-step for a 9-year-old)
+
+### Step 1 — Install Docker Desktop
+1. Download and install Docker Desktop
+2. Reboot if it asks
+3. Open Docker Desktop
+4. Make sure bottom-left says: Engine running
+
+✅ Done.
+
+---
+
+### Step 2 — Get the project
+#### Option A (recommended): Clone with Git
+Open PowerShell and run:
+
+```powershell
+cd "C:\Docker SW"
+git clone https://github.com/cybergodai/cybergodai.git
+cd cybergodai
+````
+
+#### Option B: Download ZIP
+
+1. Click “Code” → “Download ZIP”
+2. Unzip it
+3. Open the folder
+
+---
+
+### Step 3 — Start the container
+
+From the project folder, run:
+
+```powershell
+docker compose up -d --build
+```
+
+What this does:
+
+* builds the Docker image
+* starts the container in background
+
+✅ Done.
+
+---
+
+### Step 4 — Open the browser UI
+
+Open this in your browser:
+
+👉 [http://localhost:9090/vnc_auto.html](http://localhost:9090/vnc_auto.html)
+
+You should see a desktop + Chrome running.
+
+---
+
+## 🛑 Stop / Start / Reset (KISS commands)
+
+### Stop the container
+
+```powershell
+docker compose down
+```
+
+### Start again
+
+```powershell
+docker compose up -d
+```
+
+### Rebuild (if you changed Dockerfile or scripts)
+
+```powershell
+docker compose up -d --build
+```
+
+### Full reset (nuclear option)
+
+This deletes container + rebuilds everything:
+
+```powershell
+docker compose down
+docker compose up -d --build
+```
+
+---
+
+## 🔍 Quick Troubleshooting (only the useful stuff)
+
+### Problem: “This site can’t be reached” on localhost:9090
+
+Do this:
+
+1. Check container is running:
+
+```powershell
+docker ps
+```
+
+You must see something like:
+
+* `chrome-vnc` running
+* ports mapped to 9090
+
+2. Check logs:
+
+```powershell
+docker logs -f chrome-vnc
+```
+
+3. Rebuild (most common fix):
+
+```powershell
+docker compose up -d --build
+```
+
+---
+
+### Problem: Port 9090 already used
+
+Change port in `docker-compose.yml` (example):
+
+```yaml
+ports:
+  - "9091:9090"
+```
+
+Then use:
+
+* `http://localhost:9091/vnc_auto.html`
+
+---
+
+### Problem: Container name conflict “chrome-vnc already exists”
+
+Remove old container:
+
+```powershell
+docker rm -f chrome-vnc
+docker compose up -d
+```
+
+---
+
+## 📁 Repo Files (What is what)
+
+* `docker-compose.yml` — how the container runs (ports, volumes)
+* `Dockerfile` — how the image is built (Chrome + VNC stack)
+* `run-chrome.sh` — startup script (waits for display, launches Chrome)
+* `supervisord.conf` — starts processes (Xvfb, Openbox, VNC, noVNC, Chrome)
+* `chrome-data/` — local persistent Chrome profile data (ignored by git)
+
+---
+
+## 🔐 Security Notes (Important)
+
+* Chrome is isolated in a container, but still runs with `--no-sandbox` in most container setups.
+* This is normal for Dockerized Chrome and is a common tradeoff.
+* Treat this as a “safe browsing workspace” but not a military-grade isolation layer.
+
+---
+
+## 🤝 Contributing
+
+1. Fork repo
+2. Create branch
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit & push
+4. Open Pull Request
+
+---
+
+## ⚠️ Pre-Release Notice
+
+This software is provided “as-is.” Use it at your own risk.
+
+---
+
+## 📬 Need Help?
+
+Open an issue in GitHub with:
+
+* your OS (Windows 10/11)
+* Docker Desktop version
+* output of:
+
+  * `docker ps`
+  * `docker logs chrome-vnc --tail 200`
+
+```
+If you have any issues please contact me via https://www.itzen.ai/
+
+```
+
+OLD C# and Python Manual from 09/2023: # 🌟 CyberGod: Revolutionizing Endpoint Security
 
 Welcome to CyberGod! This project will guide you step-by-step to set up a **secure browsing environment** on your Windows 10 or 11 computer using **Linux Containers (LXC)** and **Google Chrome**. Don’t worry if you’ve never worked with Linux before—we’ve got you covered! 🛡️
 
