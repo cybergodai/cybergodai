@@ -1,4 +1,4 @@
-# 🌟 CyberGod — Secure Browser Sandbox (Docker + Web VNC)
+# 🌟 CyberGod/Perseus Sheild — Secure Browser Sandbox (Docker + Web VNC)
 
 ## ✅ Update (09/01/2026) — Architecture Simplified (KISS)
 This project was updated on 09/01/2026 to make the setup super KISS (Keep It Simple, Stupid).
